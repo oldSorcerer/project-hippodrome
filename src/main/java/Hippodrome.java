@@ -1,12 +1,16 @@
+import lombok.AccessLevel;
+import lombok.experimental.FieldDefaults;
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 import static java.util.Objects.isNull;
 
+@FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 public class Hippodrome {
 
-    private final List<Horse> horses;
+    List<Horse> horses;
 
     public Hippodrome(List<Horse> horses) {
         if (isNull(horses)) {
@@ -14,7 +18,6 @@ public class Hippodrome {
         } else if (horses.isEmpty()) {
             throw new IllegalArgumentException("Horses cannot be empty.");
         }
-
         this.horses = horses;
     }
 
@@ -29,6 +32,6 @@ public class Hippodrome {
     public Horse getWinner() {
         return horses.stream()
                 .max(Comparator.comparing(Horse::getDistance))
-                .get();
+                .orElseThrow();
     }
 }

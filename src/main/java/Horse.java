@@ -1,13 +1,16 @@
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.experimental.FieldDefaults;
 
 import static java.util.Objects.isNull;
 
 @Getter
+@FieldDefaults(level = AccessLevel.PRIVATE)
 public class Horse {
 
-    private final String name;
-    private final double speed;
-    private double distance;
+    final String name;
+    final double speed;
+    double distance;
 
     public Horse(String name, double speed, double distance) {
         if (isNull(name)) {
