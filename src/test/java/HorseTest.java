@@ -16,10 +16,8 @@ class HorseTest {
 
     @Test
     void testConstructor_ShouldThrowExTextMessage_WhenArgsNameNull() {
-        assertThrows(
-                IllegalArgumentException.class,
-                () -> new Horse(null, 10),
-                "Name cannot be null."
+        assertThrows(IllegalArgumentException.class,
+                () -> new Horse(null, 10), "Name cannot be null."
         );
     }
 
@@ -27,7 +25,7 @@ class HorseTest {
     @ValueSource(strings = {"", " ", "\t", "\n", "\f", "\r"})
     void testConstructor_ShouldThrowIllegalArgumentEx_WhenArgsNameIsBlank(String name) {
         assertThrows(IllegalArgumentException.class,
-                () -> new Horse( name, 10));
+                () -> new Horse(name, 10));
     }
 
 
@@ -35,8 +33,7 @@ class HorseTest {
     @ValueSource(strings = {"", " ", "\t", "\n", "\f", "\r"})
     void testConstructor_ShouldThrowExTextMessage_WhenArgsNameIsBlank(String name) {
         assertThrows(IllegalArgumentException.class,
-                () -> new Horse( name, 10),
-                "Name cannot be blank.");
+                () -> new Horse(name, 10), "Name cannot be blank.");
     }
 
     @Test
@@ -48,41 +45,38 @@ class HorseTest {
     @Test
     void testConstructor_ShouldThrowExTextMessage_WhenArgsSpeedNegative() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Horse(null, -10),
-                "Speed cannot be negative.");
+                () -> new Horse(null, -10), "Speed cannot be negative.");
     }
 
     @Test
-    void testConstructor_ShouldThrowIllegalArgumentEx_WhenArgsDistanceNegative(){
+    void testConstructor_ShouldThrowIllegalArgumentEx_WhenArgsDistanceNegative() {
         assertThrows(IllegalArgumentException.class,
                 () -> new Horse(null, 10, -10));
     }
 
 
     @Test
-    void testConstructor_ShouldThrowExTextMessage_WhenArgsDistanceNegative(){
+    void testConstructor_ShouldThrowExTextMessage_WhenArgsDistanceNegative() {
         assertThrows(IllegalArgumentException.class,
-                () -> new Horse(null, 10, -10),
-                "Distance cannot be negative.");
+                () -> new Horse(null, 10, -10), "Distance cannot be negative.");
     }
 
     @Test
-    void getName() {
+    void testGetName_ShouldReturnName_WhenArgsInConstructorIsName() {
+        assertEquals("Zephyr", new Horse("Zephyr", 10).getName());
     }
 
     @Test
-    void getSpeed() {
+    void testGetSpeed_ShouldReturnSpeed_WhenArgsInConstructorIsSpeed() {
+        assertEquals(10, new Horse("Zephyr", 10).getSpeed());
     }
 
     @Test
-    void getDistance() {
+    void testGetDistance_ShouldReturnDistance_WhenArgsInConstructorIsDistance() {
+        assertEquals(10, new Horse("Zephyr", 0, 10).getDistance());
     }
 
     @Test
     void move() {
-    }
-
-    @Test
-    void getRandomDouble() {
     }
 }
