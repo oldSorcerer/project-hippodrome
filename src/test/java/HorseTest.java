@@ -10,12 +10,13 @@ import org.mockito.Mockito;
 import java.lang.reflect.Field;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.*;
 
 @FieldDefaults(level = AccessLevel.PRIVATE, makeFinal = true)
 class HorseTest {
 
     String name = "Zephyr";
-    int speed = 10;
+    double speed = 10;
     double distance = 10;
 
     @Test
@@ -154,7 +155,7 @@ class HorseTest {
 
             new Horse(name, speed, distance).move();
 
-            mockStatic.verify(() -> Horse.getRandomDouble(0.2, 0.9));
+            mockStatic.verify(() -> Horse.getRandomDouble(eq(0.2), eq(0.9)));
         }
     }
 
