@@ -1,11 +1,11 @@
 import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
 
 import java.util.List;
-import java.util.stream.Collectors;
+
 import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
 
 class HippodromeTest {
 
@@ -36,25 +36,33 @@ class HippodromeTest {
     }
 
     @Test
-    void getHorses() {
-        List<Horse> horses = IntStream.range(0, 30).mapToObj(i -> new Horse("" + i, i, i)).toList();
+    void testGetHorses_ShouldListFor30Horse_WhenPassListFor30Horse() {
+        var horses = IntStream.range(0, 30).mapToObj(i -> new Horse("Zephyr " + i, i, i)).toList();
+
         Hippodrome hippodrome = new Hippodrome(horses);
 
         assertEquals(horses, hippodrome.getHorses());
+//        assertSame(horses, hippodrome.getHorses());
     }
 
     @Test
-    void move() {
-        List<Horse> horses = IntStream.range(0, 50).mapToObj(i -> Mockito.mock(Horse.class)).collect(Collectors.toList());
+    void testMove_ShouldCallMethodMove_WhenPassListFor50MockHorse() {
+        var horses = IntStream.range(0, 50).mapToObj(i -> mock(Horse.class)).toList();
 
         new Hippodrome(horses).move();
 
-        horses.forEach(horse -> Mockito.verify(horse, Mockito.times(1)).move());
+        horses.forEach(horse -> verify(horse, times(1)).move());
     }
 
     @Test
-    void getWinner() {
+    void testGetWinner_ShouldHorse_WhenLongestDistance() {
+        Horse horse1 = new Horse("Blaze", 1, 10);
+        Horse horse2 = new Horse("Lobster", 2, 20);
+        Horse horse3 = new Horse("Pegasus", 3, 30);
 
-//        new Horse()
+        Hippodrome hippodrome = new Hippodrome(List.of(horse1, horse2, horse3));
+
+        assertSame(horse3, hippodrome.getWinner());
     }
 }
+//test{Method}_Should{Do}_When{Condition}
