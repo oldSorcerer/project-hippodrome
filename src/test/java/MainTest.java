@@ -8,8 +8,8 @@ class MainTest {
 
     @Test
     @Disabled
-    @Timeout(value = 21)
-    void timeout() throws Exception {
+    @Timeout(21)
+    void timeout() {
         Main.main(null);
     }
 }
