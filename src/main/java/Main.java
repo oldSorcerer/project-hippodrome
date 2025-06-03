@@ -6,7 +6,7 @@ import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class Main {
-
+    //Logger log = LogManager.getLogger(Main.class); log4j
     @SneakyThrows
     public static void main(String[] args) {
         List<Horse> horses = List.of(
