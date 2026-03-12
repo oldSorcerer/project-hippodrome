@@ -1,12 +1,16 @@
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Slf4j
 public class Main {
-    //Logger log = LogManager.getLogger(Main.class); log4j
+
+//    Logger log = LogManager.getLogger(Main.class); // log4j
+
     @SneakyThrows
     public static void main(String[] args) {
         List<Horse> horses = List.of(

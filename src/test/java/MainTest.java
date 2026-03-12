@@ -7,7 +7,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class MainTest {
 
     @Test
-    @Disabled
+//    @Disabled
     @Timeout(21)
     void timeout() {
         Main.main(null);

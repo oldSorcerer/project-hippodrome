@@ -37,7 +37,9 @@ class HippodromeTest {
 
     @Test
     void testGetHorses_ShouldListFor30Horse_WhenPassListFor30Horse() {
-        var horses = IntStream.range(0, 30).mapToObj(i -> new Horse("Zephyr " + i, i, i)).toList();
+        var horses = IntStream.range(0, 30)
+                .mapToObj(i -> new Horse("Zephyr " + i, i, i))
+                .toList();
 
         Hippodrome hippodrome = new Hippodrome(horses);
 
@@ -47,7 +49,9 @@ class HippodromeTest {
 
     @Test
     void testMove_ShouldCallMethodMove_WhenPassListFor50MockHorse() {
-        var horses = IntStream.range(0, 50).mapToObj(i -> mock(Horse.class)).toList();
+        var horses = IntStream.range(0, 50)
+                .mapToObj(i -> mock(Horse.class))
+                .toList();
 
         new Hippodrome(horses).move();
 
